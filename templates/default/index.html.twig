@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+    <h1>Upload your files</h1>
+
+    {{ form_start(form, {'attr': {'id': 'uploadForm'}})  }}
+
+    {{ form_row(form.brochure, {'attr': {'class': 'dropzone2'}}) }}
+
+    {{ form_end(form) }}
+    <h1>hello</h1>
+    {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />#}
+    {#    <div class="container">#}
+    {#        <div class="box">#}
+    {#            <span>short text</span>#}
+    {#        </div>#}
+    {#        <div class="box">#}
+    {#            <span>centered text</span>#}
+    {#        </div>#}
+    {#        <div class="box">#}
+    {#            <span class="fas fa-times"></span>#}
+    {#        </div>#}
+    {#    </div>#}
+
+    <style>
+        .container {
+            display: flex;
+        }
+        .box {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .box:first-child > span {
+            margin-right: auto;
+        }
+        .box:last-child > span {
+            margin-left: auto;
+        }
+        .box {
+            align-items: center;
+            border: 1px solid #666;
+            background-color: #c8cbcf;
+            height: 60px;
+        }
+        p {
+            text-align: center;
+            margin: 5px 0 0 0;
+        }
+    </style>
+
+
+    <script>
+        // Dropzone.autoDiscover = false;
+        // Dropzone.options.uploadForm = {
+        //     uploadMultiple: false,
+        //     paramName: 'file',
+        //     maxFiles: 1,
+        //     MaxFilesize: 6000,
+        // }
+        //
+        // let uploader = document.querySelector('#uploader');
+        // let newDropzone = new Dropzone(uploader, Dropzone.options);
+
+        // fetch('/')
+        //     .then(response => response.url)
+        //     .then(file => console.log(file))
+    </script>
+{% endblock %}
