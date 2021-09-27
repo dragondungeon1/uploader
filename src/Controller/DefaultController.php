@@ -115,10 +115,10 @@ class DefaultController extends AbstractController
                 $targetPath,
                 $filename
             );
-//            move_uploaded_file($file->getPathname(), $targetFile);
-
 // Be sure that the file has been uploaded
-            if (!file_exists($targetFile)) $returnResponse("An error occurred and we couldn't upload the requested file.");
+            if (!file_exists($targetFile)) {
+                $returnResponse("An error occurred and we couldn't upload the requested file.");
+            }
 
             /* ========================================
               FINAL UPLOAD CONDITIONAL
@@ -129,6 +129,7 @@ class DefaultController extends AbstractController
                 // ===== concatenate uploaded files =====
                 // set emtpy string for file content concatonation
                 $file_content = "";
+                
                 // loop through temp files and grab the content
                 for ($i = 1; $i <= $chunkTotal; $i++) {
 
@@ -144,36 +145,26 @@ class DefaultController extends AbstractController
                     // method 2
                     $chunk = base64_encode(stream_get_contents($temp_file_path, $fileSize));*/
                     // method 3
-                    $chunk = base64_encode(file_get_contents($temp_file_path));
+//                    $chunk = base64_encode(file_get_contents($temp_file_path));
+                    $chunk = file_get_contents($temp_file_path);
 
                     // check chunk content
-                    if (empty($chunk)) $returnResponse("Chunks are uploading as empty strings.");
+                    if (empty($chunk)) {
+                        $returnResponse("Chunks are uploading as empty strings.");
+                    }
 
                     // add chunk to main file
                     $file_content .= $chunk;
-//                    dump($file_content);
+
                     // delete chunk
                     unlink($temp_file_path);
                     if (file_exists($temp_file_path)) {
                         $returnResponse("Your temp files could not be deleted.");
                     }
-
-                    continue;
-
                 }
-                // create and write concatonated chunk to the main file
-//dd("{$targetPath}{$fileId}.{$fileType}");
-
 //                file_put_contents("{$targetPath}{$fileId}.{$fileType}", base64_decode($file_content));
+                file_put_contents("{$targetPath}{$fileId}.{$fileType}", $file_content);
 
-// other method of adding contents to new file below, but the one above seemed simpler
-                $final = fopen("{$targetPath}{$fileId}.{$fileType}", 'ab');
-                fwrite($final, base64_decode($file_content));
-                fclose($final);
-
-                // create new FileMaker code removed here, irrelevant
-// run FileMaker script to populate container field with concatenated file code removed here, irrelevant
-// somewhere in the code above, if everything succeeds, I unlink the concatenated file so that it's not cluttering my "uploads" folder, but I never get this far
                 $returnResponse(null, null, "final return");
             } else {
                 $returnResponse(null, null, "chunksending not reached");

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         parallelUploads: 1,
         chunking: true,
         forceChunking: true,
-        chunkSize: 10000,
+        chunkSize: 2000000,
         retryChunks: true,
         maxFilesize: 102400,
 
