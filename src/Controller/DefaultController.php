@@ -115,6 +115,8 @@ class DefaultController extends AbstractController
                 $targetPath,
                 $filename
             );
+//            move_uploaded_file($file->getPathname(), $targetFile);
+
 // Be sure that the file has been uploaded
             if (!file_exists($targetFile)) {
                 $returnResponse("An error occurred and we couldn't upload the requested file.");
@@ -162,9 +164,18 @@ class DefaultController extends AbstractController
                         $returnResponse("Your temp files could not be deleted.");
                     }
                 }
+
 //                file_put_contents("{$targetPath}{$fileId}.{$fileType}", base64_decode($file_content));
                 file_put_contents("{$targetPath}{$fileId}.{$fileType}", $file_content);
 
+// other method of adding contents to new file below, but the one above seemed simpler
+//                $final = fopen("{$targetPath}{$fileId}.{$fileType}", 'ab');
+//                fwrite($final, base64_decode($file_content));
+//                fclose($final);
+
+                // create new FileMaker code removed here, irrelevant
+// run FileMaker script to populate container field with concatenated file code removed here, irrelevant
+// somewhere in the code above, if everything succeeds, I unlink the concatenated file so that it's not cluttering my "uploads" folder, but I never get this far
                 $returnResponse(null, null, "final return");
             } else {
                 $returnResponse(null, null, "chunksending not reached");

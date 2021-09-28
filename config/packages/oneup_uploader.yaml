@@ -1,6 +1,6 @@
 oneup_uploader:
   mappings:
-    gallery:
+    gallery: ## uploads
       frontend: dropzone # or any uploader you use in the frontend
       storage:
-        directory: "%kernel.project_dir%/../assets/media/"
+        directory: "%kernel.project_dir%/assets/media/"
