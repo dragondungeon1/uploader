@@ -25,3 +25,20 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+/assets/media/10mb_file
+/assets/media/50mb_file
+/assets/media/100mb_file
+/assets/media/200mb_file
+/assets/media/temp_1GB_file
+/assets/media/temp_10GB_file
+/assets/media/150mb_file
+/assets/media/130mb_file
+/assets/bins/10mb_file
+/assets/bins/50mb_file
+/assets/bins/100mb_file
+/assets/bins/130mb_file
+/assets/bins/150mb_file
+/assets/bins/200mb_file
+/assets/bins/temp_1GB_file
+/assets/bins/temp_10GB_file
+/assets/media/
