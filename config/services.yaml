@@ -6,6 +6,8 @@
 parameters:
     media: "%kernel.project_dir%/assets/media/"
 #    media: "%kernel.project_dir%/public/uploads/media"
+    meting_directory: '%kernel.project_dir%/assets/data/csv'
+
 
 services:
     # default configuration for services in *this* file
